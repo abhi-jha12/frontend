@@ -47,7 +47,7 @@ function Header() {
             <span>☰</span>
           </button>
           {isDropdownOpen && (
-            <div className="flex flex-row bg-black text-white">
+            <div className="flex flex-row bg-black text-white justify-center">
               <Link to="/" className="text-xs p-2">
                 HOME
               </Link>
