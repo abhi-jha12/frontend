@@ -39,11 +39,11 @@ function Product() {
             <div className=" bg-zinc-300 max-w-[250px] h-[300px] w-full lg:ml-5 mt-8 m-auto py-16 px-3 relative group rounded-2xl" />
           </div>
 
-          <div className="text-start text-black font-regular text-lg py-2 mt-1 tracking-wider">
+          <div className="text-start text-black font-regular text-lg py-2 px-3 mt-1 tracking-wider">
             Item Description: <br />
             {[description]}
           </div>
-          <div className="flex md:flex-row flex-col flex-wrap relative group justify-center md:gap-1 gap-0 ">
+          <div className="flex md:flex-row flex-col flex-wrap relative group justify-center md:gap-1">
             <Button name="ADD TO CART" location="/login"  textSize='lg' />
             <Button name="TRY IT VIRTUALLY" location="/login" textSize='lg' />
             <Button name="MOVE TO WISHLIST" location="/login" textSize='lg' />
