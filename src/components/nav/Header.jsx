@@ -5,7 +5,7 @@ import wishlist_icon from "../../assets/wishlist_icon.png";
 import user_icon from "../../assets/profile_icon.png";
 import cart_icon from "../../assets/cart_icon.png";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
