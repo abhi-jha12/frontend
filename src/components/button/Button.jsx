@@ -8,7 +8,7 @@ function Button(props) {
 
   return (
     <button
-      className={`justify-center text-white font-bold bg-neutral-950 self-center items-stretch mt-11 mb-9 px-11 py-3 rounded-lg ${props.textSize || 'text-lg'}`}
+      className={`font-overpass justify-center text-white font-bold bg-neutral-950 self-center items-stretch mt-11 mb-9 px-11 py-3 rounded-lg ${props.textSize || 'text-lg'}`}
       onClick={() => navigate(btn_navigate)}
     >
       {btn_text}

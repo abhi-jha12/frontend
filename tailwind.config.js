@@ -6,9 +6,12 @@ export default {
     
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        overpass: ['Overpass', 'sans-serif'],
+    },
   },
   plugins: [
     
   ],
-}
+}}

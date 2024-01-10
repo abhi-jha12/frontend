@@ -14,7 +14,7 @@ function SizeButton(props) {
   const btn_text = props.name;
 
   return (
-    <button className="justify-center text-white text-xl font-bold bg-neutral-950 self-center items-stretch mt-11 mb-9 px-11 py-3 rounded-lg max-md:mt-10 max-md:px-5">
+    <button className="justify-center font-overpass text-white text-xl font-bold bg-neutral-950 self-center items-stretch mt-11 mb-9 px-11 py-2 rounded-lg max-md:mt-10 max-md:px-5">
       {btn_text}
 
       <select
