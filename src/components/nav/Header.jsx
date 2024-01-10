@@ -5,9 +5,11 @@ import wishlist_icon from "../../assets/wishlist_icon.png";
 import user_icon from "../../assets/profile_icon.png";
 import cart_icon from "../../assets/cart_icon.png";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
+  const btn_navigate = '/';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const cartItems = useSelector((state) => state.cart.cart);
@@ -48,9 +50,9 @@ function Header() {
             {isMenuOpen && (
               <MenuList className="flex flex-row-reverse flex-col bg-black ">
                 <MenuItem onSelect={() => setIsMenuOpen(!isMenuOpen)}>
-                  <Link to="/" className="text-white text-xs mx-2">
+                  <button className="text-white text-xs mx-2" onClick={() => navigate(btn_navigate)}>
                     H O M E
-                  </Link>
+                  </button>
                 </MenuItem>
                 <MenuItem onSelect={() => setIsMenuOpen(false)}>
                   <Link to="/shop" className="text-white text-xs mx-2">
