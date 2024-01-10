@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Menu, MenuButton, MenuList, MenuItem } from "@reach/menu-button";
 import logo from "../../assets/logo.png";
 import wishlist_icon from "../../assets/wishlist_icon.png";
 import user_icon from "../../assets/profile_icon.png";
 import cart_icon from "../../assets/cart_icon.png";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const cartItems = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
@@ -26,13 +25,12 @@ function Header() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const handleHamburgerClick = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
-    <div className="flex items-stretch justify-between gap-10 mt-8 mx-10 max-md:max-w-full max-md:flex-wrap max-md:mr-2.5">
+    <div className="flex items-stretch justify-between gap-10 mt-5 mx-10 max-md:max-w-full max-md:flex-wrap max-md:mr-2.5">
       <img
         loading="lazy"
         src={logo}
@@ -40,79 +38,57 @@ function Header() {
       />
       {isMobileView ? (
         // Hamburger button and menu for mobile view
-        <div className="mobile-menu">
-          <Menu>
-            <MenuButton className="hamburger" onClick={handleMenuToggle}>
-              <span>☰</span>
-            </MenuButton>
-            {isMenuOpen && (
-              <MenuList className="flex flex-row-reverse flex-col bg-black ">
-                <MenuItem onSelect={() => setIsMenuOpen(!isMenuOpen)}>
-                  <Link to="/" className="text-white text-xs mx-2">
-                    H O M E
-                  </Link>
-                </MenuItem>
-                <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/shop" className="text-white text-xs mx-2">
-                    S H O P
-                  </Link>
-                </MenuItem>
-                <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/error" className="text-white text-xs mx-2">
-                    A B O U T
-                  </Link>
-                </MenuItem>
-                <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/error" className="text-white text-xs mx-2">
-                    B L O G
-                  </Link>
-                </MenuItem>
-                <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/cart" className="text-white text-xs mx-2">
-                    C A R T
-                  </Link>
-                </MenuItem>
-                <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/error" className="text-white text-xs mx-2">
-                    P R O F I L E
-                  </Link>
-                </MenuItem>
-                <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/wishlist" className="text-white text-xs mx-2">
-                    W I S H L I S T
-                  </Link>
-                </MenuItem>
-              </MenuList>
-            )}
-          </Menu>
-        </div>
+        <>
+          <button
+            className="flex mt-3 mr-2 mb-2 justify-center"
+            onClick={handleHamburgerClick}
+            aria-expanded={isDropdownOpen}
+          >
+            <span>☰</span>
+          </button>
+          {isDropdownOpen && (
+            <div className="flex flex-row bg-black text-white">
+              <Link to="/" className="text-xs p-2">
+                HOME
+              </Link>
+              <Link to="/shop" className="text-xs p-2">
+                SHOP
+              </Link>
+              <Link to="/error" className="text-xs p-2">
+                ABOUT
+              </Link>
+              <Link to="/wishlist" className="text-xs p-2">
+                WISHLIST
+              </Link>
+              <Link to="/cart" className="text-xs p-2">
+                 CART
+              </Link>
+              <Link to="/profile" className="text-xs p-2">
+                PROFILE
+              </Link>
+            </div>
+          )}
+        </>
       ) : (
         // Original menu for non-mobile view
 
         <div className="self-center flex justify-between gap-16 my-2 items-start max-md:max-w-full max-md:flex-wrap">
           <span className="bg-neutral-950 flex items-stretch justify-between gap-12 mx-20 px-12 py-1 rounded-lg max-md:max-w-full max-md:flex-wrap max-md:px-5">
-            <Menu>
-              <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <Link to="/" className="text-white text-sm">
-                  H O M E
-                </Link>
-              </MenuButton>
-              <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <Link to="/shop" className="text-white text-sm mx-5">
-                  S H O P
-                </Link>
-              </MenuButton>
-              <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <Link to="/error" className="text-white text-sm mx-5">
-                  A B O U T
-                </Link>
-              </MenuButton>
-              <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <Link to="/error" className="text-white text-sm mx-5">
-                  B L O G
-                </Link>
-              </MenuButton>
-            </Menu>
+            <Link to="/" className="text-white text-sm">
+              H O M E
+            </Link>
+
+            <Link to="/shop" className="text-white text-sm mx-5">
+              S H O P
+            </Link>
+
+            <Link to="/error" className="text-white text-sm mx-5">
+              A B O U T
+            </Link>
+
+            <Link to="/error" className="text-white text-sm mx-5">
+              B L O G
+            </Link>
           </span>
           <span className="bg-neutral-950 self-stretch flex items-center justify-between gap-10 pl-6 mr-6 rounded-lg max-md:max-w-full max-md:flex-wrap max-md:px-5">
             <div className="justify-center text-white text-sm my-auto mr-1">

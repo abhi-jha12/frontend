@@ -14,7 +14,7 @@ function Footer() {
   return (
     <div className=" bg-black text-white max-w-[1400px] h-[460px] w-full m-auto mt-10 py-6 px-4 relative group ">
       <div className="flex flex-col justify-center">
-        <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700" />
+        <hr className="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700" />
         <div className="flex h-13 w-50 justify-center">
           <img src={LogoFooter} alt="logo" />
         </div>
