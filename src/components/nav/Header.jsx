@@ -5,7 +5,7 @@ import wishlist_icon from "../../assets/wishlist_icon.png";
 import user_icon from "../../assets/profile_icon.png";
 import cart_icon from "../../assets/cart_icon.png";
 import { useSelector } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
@@ -54,34 +54,34 @@ function Header() {
                   </button>
                 </MenuItem>
                 <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/shop" className="text-white text-xs mx-2">
+                  <button className="text-white text-xs mx-2" onClick = {()  => navigate(“/wishlist”)}>
                     S H O P
-                  </Link>
+                  </button>
                 </MenuItem>
                 <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/error" className="text-white text-xs mx-2">
+                  <button className="text-white text-xs mx-2">
                     A B O U T
-                  </Link>
+                  </button>
                 </MenuItem>
                 <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/error" className="text-white text-xs mx-2">
+                  <button className="text-white text-xs mx-2">
                     B L O G
-                  </Link>
+                  </button>
                 </MenuItem>
                 <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/cart" className="text-white text-xs mx-2">
+                  <button className="text-white text-xs mx-2">
                     C A R T
-                  </Link>
+                  </button>
                 </MenuItem>
                 <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/error" className="text-white text-xs mx-2">
+                  <button className="text-white text-xs mx-2">
                     P R O F I L E
-                  </Link>
+                  </button>
                 </MenuItem>
                 <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <Link to="/wishlist" className="text-white text-xs mx-2">
+                  <button className="text-white text-xs mx-2"  onClick = {()  => navigate(“/wishlist”)}>
                     W I S H L I S T
-                  </Link>
+                  </button>
                 </MenuItem>
               </MenuList>
             )}
