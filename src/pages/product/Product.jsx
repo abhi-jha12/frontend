@@ -44,9 +44,9 @@ function Product() {
             {[description]}
           </div>
           <div className="flex md:flex-row flex-col flex-wrap relative group justify-center md:gap-1 gap-0 ">
-            <Button name="ADD TO CART" location="/login" />
-            <Button name="TRY IT VIRTUALLY" location="/login" />
-            <Button name="MOVE TO WISHLIST" location="/login" />
+            <Button name="ADD TO CART" location="/login"  textSize='lg' />
+            <Button name="TRY IT VIRTUALLY" location="/login" textSize='lg' />
+            <Button name="MOVE TO WISHLIST" location="/login" textSize='lg' />
           </div>
         </div>
       </div>
