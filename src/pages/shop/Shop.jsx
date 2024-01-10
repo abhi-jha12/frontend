@@ -11,17 +11,17 @@ function Shop() {
       <div className="flex flex-col gap-5 mx-3">
       <div className=" bg-zinc-300 max-w-[1260px] h-[300px] w-full m-auto py-16 px-4 relative group rounded-2xl">
         <div className="flex justify-end  mt-10  py-20 rounded-lg max-md:mt-10 max-md:pr-5">
-          <Button name="Buy Now" location="/product" />
+          <Button name="Buy Now" location="/product1" />
         </div>
       </div>
       <div className=" bg-zinc-300 max-w-[1260px] h-[300px] w-full m-auto py-16 px-4 relative group rounded-2xl">
         <div className="flex justify-end  mt-10  py-20 rounded-lg max-md:mt-10 max-md:pr-5">
-          <Button name="Buy Now" location="/product" />
+          <Button name="Buy Now" location="/product2" />
         </div>
       </div>
       <div className=" bg-zinc-300 max-w-[1260px] h-[300px] w-full m-auto py-16 px-4 relative group rounded-2xl">
         <div className="flex justify-end  mt-10  py-20 rounded-lg max-md:mt-10 max-md:pr-5">
-          <Button name="Buy Now" location="/product" />
+          <Button name="Buy Now" location="/error" />
         </div>
       </div>
       </div>

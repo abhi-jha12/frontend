@@ -5,6 +5,7 @@ import wishlist_icon from "../../assets/wishlist_icon.png";
 import user_icon from "../../assets/profile_icon.png";
 import cart_icon from "../../assets/cart_icon.png";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,18 +46,41 @@ function Header() {
               <span>☰</span>
             </MenuButton>
             {isMenuOpen && (
-              <MenuList className="grid grid-cols-4 items-center mt-5 bg-black ">
+              <MenuList className="flex flex-row-reverse flex-col bg-black ">
                 <MenuItem onSelect={() => setIsMenuOpen(!isMenuOpen)}>
-                  <div className="text-white text-xsm mx-1">HOME</div>
+                  <Link to="/" className="text-white text-xs mx-2">
+                    H O M E
+                  </Link>
                 </MenuItem>
                 <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <div className="text-white text-xsm mx-1">SHOP</div>
+                  <Link to="/shop" className="text-white text-xs mx-2">
+                    S H O P
+                  </Link>
                 </MenuItem>
                 <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <div className="text-white text-xsm mx-1">ABOUT</div>
+                  <Link to="/error" className="text-white text-xs mx-2">
+                    A B O U T
+                  </Link>
                 </MenuItem>
                 <MenuItem onSelect={() => setIsMenuOpen(false)}>
-                  <div className="text-white text-xsm mx-1">BLOG</div>
+                  <Link to="/error" className="text-white text-xs mx-2">
+                    B L O G
+                  </Link>
+                </MenuItem>
+                <MenuItem onSelect={() => setIsMenuOpen(false)}>
+                  <Link to="/cart" className="text-white text-xs mx-2">
+                    C A R T
+                  </Link>
+                </MenuItem>
+                <MenuItem onSelect={() => setIsMenuOpen(false)}>
+                  <Link to="/error" className="text-white text-xs mx-2">
+                    P R O F I L E
+                  </Link>
+                </MenuItem>
+                <MenuItem onSelect={() => setIsMenuOpen(false)}>
+                  <Link to="/wishlist" className="text-white text-xs mx-2">
+                    W I S H L I S T
+                  </Link>
                 </MenuItem>
               </MenuList>
             )}
@@ -69,16 +93,24 @@ function Header() {
           <span className="bg-neutral-950 flex items-stretch justify-between gap-12 mx-20 px-12 py-1 rounded-lg max-md:max-w-full max-md:flex-wrap max-md:px-5">
             <Menu>
               <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <div className="text-white text-sm">H O M E</div>
+                <Link to="/" className="text-white text-sm">
+                  H O M E
+                </Link>
               </MenuButton>
               <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <div className="text-white text-sm mx-5">S H O P</div>
+                <Link to="/shop" className="text-white text-sm mx-5">
+                  S H O P
+                </Link>
               </MenuButton>
               <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <div className="text-white text-sm mx-5">A B O U T</div>
+                <Link to="/error" className="text-white text-sm mx-5">
+                  A B O U T
+                </Link>
               </MenuButton>
               <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <div className="text-white text-sm mx-5">B L O G</div>
+                <Link to="/error" className="text-white text-sm mx-5">
+                  B L O G
+                </Link>
               </MenuButton>
             </Menu>
           </span>
@@ -88,26 +120,32 @@ function Header() {
             </div>
 
             <div className="self-stretch flex items-stretch justify-between gap-8 mx-3">
-              <img
-                loading="lazy"
-                src={cart_icon}
-                className="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
-              />
-              {cartItems.length > 0 && (
-                <div className="text-white -ml-8 text-xs">
-                  {cartItems.length}
-                </div>
-              )}
-              <img
-                loading="lazy"
-                src={wishlist_icon}
-                className="aspect-square object-contain object-center w-4 stroke-[1.5px] stroke-white overflow-hidden self-center shrink-0 max-w-full my-auto"
-              />
-              <img
-                loading="lazy"
-                src={user_icon}
-                className="aspect-square object-contain object-center w-3.5 overflow-hidden self-center shrink-0 max-w-full my-auto"
-              />
+              <Link to="/cart">
+                <img
+                  loading="lazy"
+                  src={cart_icon}
+                  className="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full mt-1"
+                />
+                {cartItems.length >= 0 && (
+                  <div className="text-white -mt-6 ml-6 text-xs">
+                    {cartItems.length ?? 0}
+                  </div>
+                )}
+              </Link>
+              <Link to="/wishlist">
+                <img
+                  loading="lazy"
+                  src={wishlist_icon}
+                  className="aspect-square object-contain object-center w-4 stroke-[1.5px] stroke-white overflow-hidden self-center shrink-0 max-w-full my-auto mt-2"
+                />
+              </Link>
+              <Link to="/error">
+                <img
+                  loading="lazy"
+                  src={user_icon}
+                  className="aspect-square object-contain object-center w-3.5 overflow-hidden self-center shrink-0 max-w-full my-auto mt-2"
+                />
+              </Link>
             </div>
           </span>
         </div>

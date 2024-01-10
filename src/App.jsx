@@ -5,10 +5,12 @@ import Home from "./pages/Home";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Shop from "./pages/shop/Shop";
-import Product from "./pages/product/Product";
+import Product1 from "./pages/product/Product1";
+import Product2 from "./pages/product/Product2";
 import Cart from "./pages/cart/Cart";
 import ErrorPage from "./pages/error/ErrorPage";
 import store from "./redux/store";
+import Wishlist from "./pages/wishlist/Wishlist";
 
 const router = createBrowserRouter([
   {
@@ -32,12 +34,20 @@ const router = createBrowserRouter([
     element: <Cart />,
   },
   {
-    path: "/product",
-    element: <Product />,
+    path: "/product1",
+    element: <Product1 />,
+  },
+  {
+    path: "/product2",
+    element: <Product2 />,
   },
   {
     path: "/error",
     element: <ErrorPage />,
+  },
+  {
+    path: "/wishlist",
+    element: <Wishlist />,
   },
 ]);
 

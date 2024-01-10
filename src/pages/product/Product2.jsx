@@ -7,7 +7,7 @@ import Button from "../../components/button/Button"
 
 import { PriceContext } from "../../PriceContext";
 
-function Product() {
+function Product2() {
   const { selectedSize, prices } = useContext(PriceContext);
   const selectedPrice = prices[selectedSize];
 
@@ -45,7 +45,7 @@ function Product() {
             {[description]}
           </div>
           <div className="flex md:flex-row flex-col flex-wrap relative group justify-center md:gap-1">
-            <AddButton name="ADD TO CART" textSize='lg' />
+            <AddButton name="ADD TO CART" textSize='lg' bid="1" />
             <Button name="TRY IT VIRTUALLY" location="/error" textSize='lg' />
             <Button name="MOVE TO WISHLIST" location="/error" textSize='lg' />
           </div>
@@ -57,4 +57,4 @@ function Product() {
   );
 }
 
-export default Product;
+export default Product2;
