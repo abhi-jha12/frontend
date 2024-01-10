@@ -55,7 +55,7 @@ function Header() {
           </button>
 
           {isDropdownOpen && (
-            <div className="flex flex-row bg-black text-white justify-start lg:justify-center flex-wrap ">
+            <div className="flex flex-row bg-black text-white justify-center lg:justify-center flex-wrap ">
               <Link to="/" className="text-xs p-2">
                 HOME
               </Link>
