@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import Header from "../../components/nav/Header";
 import Footer from "../../components/footer/Footer";
 import SizeButton from "../../components/button/SizeButton";
-import Button from "../../components/button/Button";
+import AddButton from "../../components/button/AddButton";
+import Button from "../../components/button/Button"
 
 import { PriceContext } from "../../PriceContext";
 
@@ -44,9 +45,9 @@ function Product() {
             {[description]}
           </div>
           <div className="flex md:flex-row flex-col flex-wrap relative group justify-center md:gap-1">
-            <Button name="ADD TO CART" location="/login"  textSize='lg' />
-            <Button name="TRY IT VIRTUALLY" location="/login" textSize='lg' />
-            <Button name="MOVE TO WISHLIST" location="/login" textSize='lg' />
+            <AddButton name="ADD TO CART" textSize='lg' />
+            <Button name="TRY IT VIRTUALLY" location="/error" textSize='lg' />
+            <Button name="MOVE TO WISHLIST" location="/error" textSize='lg' />
           </div>
         </div>
       </div>

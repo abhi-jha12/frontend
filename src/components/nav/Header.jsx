@@ -4,10 +4,12 @@ import logo from "../../assets/logo.png";
 import wishlist_icon from "../../assets/wishlist_icon.png";
 import user_icon from "../../assets/profile_icon.png";
 import cart_icon from "../../assets/cart_icon.png";
+import { useSelector } from "react-redux";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
+  const cartItems = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
     const handleResize = () => {
@@ -81,15 +83,21 @@ function Header() {
             </Menu>
           </span>
           <span className="bg-neutral-950 self-stretch flex items-center justify-between gap-10 pl-6 mr-6 rounded-lg max-md:max-w-full max-md:flex-wrap max-md:px-5">
-            <div className="justify-center text-white text-sm my-auto mr-10">
+            <div className="justify-center text-white text-sm my-auto mr-1">
               S E A R C H{" "}
             </div>
+
             <div className="self-stretch flex items-stretch justify-between gap-8 mx-3">
               <img
                 loading="lazy"
                 src={cart_icon}
                 className="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
               />
+              {cartItems.length > 0 && (
+                <div className="text-white -ml-8 text-xs">
+                  {cartItems.length}
+                </div>
+              )}
               <img
                 loading="lazy"
                 src={wishlist_icon}
