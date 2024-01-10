@@ -9,7 +9,6 @@ import { useNavigate, Link } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
-  const btn_navigate = '/';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const cartItems = useSelector((state) => state.cart.cart);
@@ -50,7 +49,7 @@ function Header() {
             {isMenuOpen && (
               <MenuList className="flex flex-row-reverse flex-col bg-black ">
                 <MenuItem onSelect={() => setIsMenuOpen(!isMenuOpen)}>
-                  <button className="text-white text-xs mx-2" onClick={() => navigate(btn_navigate)}>
+                  <button className="text-white text-xs mx-2" onClick={() => navigate("/wishlist")}>
                     H O M E
                   </button>
                 </MenuItem>
