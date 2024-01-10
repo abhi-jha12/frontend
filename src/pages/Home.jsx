@@ -19,7 +19,7 @@ function Home() {
         </h3>
       </div>
       <div className="flex items-center mx-auto justify-center">
-        <Button name=" Get Your Size" />
+        <Button name=" Get Your Size" textSize="text-2xl" />
       </div>
       <div className="flex flex-col gap-20">
         <Poster />

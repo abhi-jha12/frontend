@@ -6,10 +6,10 @@ import PhoneLogo from "../../assets/phone_logo.png";
 
 import {
   FaFacebookF,
-  FaTwitter,
   FaLinkedinIn,
   FaInstagram,
-} from "react-icons/fa";
+  FaXTwitter,
+} from "react-icons/fa6";
 function Footer() {
   return (
     <div className=" bg-black text-white max-w-[1400px] h-[460px] w-full m-auto mt-10 py-6 px-4 relative group ">
@@ -42,7 +42,7 @@ function Footer() {
             <FaFacebookF />
           </a>
           <a href="https://twitter.com" className="hover:text-gray-300">
-            <FaTwitter />
+            <FaXTwitter />
           </a>
           <a href="https://linkedin.com" className="hover:text-gray-300">
             <FaLinkedinIn />
