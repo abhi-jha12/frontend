@@ -40,14 +40,22 @@ function Header() {
         // Hamburger button and menu for mobile view
         <>
           <button
-            className="flex mt-3 mr-2 mb-2 justify-center"
+            className="navbar-burger flex items-center text-black p-3"
             onClick={handleHamburgerClick}
             aria-expanded={isDropdownOpen}
           >
-            <span>☰</span>
+            <svg
+              class="block h-4 w-4 fill-current"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>Mobile menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+            </svg>
           </button>
+
           {isDropdownOpen && (
-            <div className="flex flex-row bg-black text-white flex-wrap">
+            <div className="flex flex-row bg-black text-white justify-start lg:justify-center flex-wrap">
               <Link to="/" className="text-xs p-2">
                 HOME
               </Link>
@@ -61,7 +69,7 @@ function Header() {
                 WISHLIST
               </Link>
               <Link to="/cart" className="text-xs p-2">
-                 CART
+                CART
               </Link>
               <Link to="/profile" className="text-xs p-2">
                 PROFILE
