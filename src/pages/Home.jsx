@@ -6,12 +6,13 @@ import Poster from "../components/hero/Poster";
 import ImageCard from "../components/cards/ImageCard";
 import Footer from "../components/footer/Footer";
 
+
 function Home() {
   return (
     <>
       <Header />
       <ImageCarousel />
-      <div className="container mx-auto flex items-center justify-center flex-1 text-black text-center text-xl self-center max-w-[1061px] mt-15 md:shrink  max-md:mt-5">
+      <div className="container mx-auto flex items-center justify-center  text-black text-center text-xl self-center max-w-[1061px] mt-15 md:shrink  max-md:mt-5">
         <h3>
           &quot; Discovering your perfect fit is now easier than ever. Say
           goodbye to the hassle of measuring tapes! Simply click below to unlock
@@ -26,12 +27,12 @@ function Home() {
         <Poster />
       </div>
       <div className="container mx-auto flex items-center justify-center flex-1 text-black text-center text-4xl font-bold self-center max-w-[1061px] mt-20 md:shrink  max-md:mt-5">
-        <h1>T O P S E A R C H </h1>
+        <h1 className="text-center font-bold font-overpass text-4xl my-7 tracking-widest ">TOP SEARCHES</h1>
       </div>
-      <div className="flex flex-wrap justify-center mt-10 space-y-4 ">
-      <ImageCard />
-      <ImageCard />
-      <ImageCard />
+      <div className='flex flex-wrap md:flex-row relative justify-around'>
+      <ImageCard pid='1' btn_name="ADD TO CART" />
+      <ImageCard pid='2' btn_name="ADD TO CART" />
+      <ImageCard pid='3' btn_name="ADD TO CART" />
       </div>
       <Footer />
     </>
