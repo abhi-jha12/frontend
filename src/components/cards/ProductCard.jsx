@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import AddButton from "../button/AddButton";
 import { PriceContext } from "../../PriceContext";
 
-function ProductCard({ pid }) {
+function ProductCard({ pid , btn_name }) {
   const { selectedSize, prices } = useContext(PriceContext);
   const selectedPrice = prices[selectedSize];
   return (
@@ -14,7 +14,7 @@ function ProductCard({ pid }) {
             &#8377;{[selectedPrice ?? 9999]}
           </h3>
 
-          <AddButton name="MOVE TO CART" textSize="sm" bid={pid ?? 1} />
+          <AddButton name={btn_name ?? "Empty button"} textSize="sm" bid={pid ?? 1} />
         </div>
       </div>
     </>
