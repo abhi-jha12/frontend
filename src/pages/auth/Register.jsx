@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import Header from "../../components/nav/Header";
+import Footer from "../../components/footer/Footer";
 
-const Register = () => {
+function Register() {
   return (
-    <div><h1>Register</h1></div>
-  )
+    <>
+      <Header />
+      <Footer />
+    </>
+  );
 }
 
-export default Register
+export default Register;
