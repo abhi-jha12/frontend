@@ -11,6 +11,7 @@ import Cart from "./pages/cart/Cart";
 import ErrorPage from "./pages/error/ErrorPage";
 import store from "./redux/store";
 import Wishlist from "./pages/wishlist/Wishlist";
+import Profile from "./pages/profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "/wishlist",
     element: <Wishlist />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
   },
 ]);
 

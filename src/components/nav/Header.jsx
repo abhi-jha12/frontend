@@ -123,7 +123,7 @@ function Header() {
                   className="aspect-square object-contain object-center w-4 stroke-[1.5px] stroke-white overflow-hidden self-center shrink-0 max-w-full my-auto mt-2"
                 />
               </Link>
-              <Link to="/error">
+              <Link to="/profile">
                 <img
                   loading="lazy"
                   src={user_icon}

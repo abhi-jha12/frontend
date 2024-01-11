@@ -14,7 +14,7 @@ function Cart(props) {
   return (
     <>
       <Header />
-      <h1 className="text-center text-4xl my-7 ">Cart Items</h1>
+      <h1 className="text-center font-bold font-overpass text-4xl my-7 ">Cart Items</h1>
       {cartitems.map((item) => {
         return (
           <>

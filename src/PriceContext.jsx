@@ -1,28 +1,33 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState,useEffect } from "react";
 
 const PriceContext = createContext();
 
 const PriceProvider = ({ children }) => {
-  const [selectedSize, setSelectedSize] = useState("");
-  const [prices, setPrices] = useState({
+  const defaultPrices = {
     SMALL: 10,
     MEDIUM: 15,
     LARGE: 20,
-  });
-
+  };
+  const [selectedSize, setSelectedSize] = useState("");
+  const [prices, setPrices] = useState(defaultPrices);
+  const [defaultPrice, setDefaultPrice] = useState("");
+  useEffect(() => {
+    if (selectedSize && defaultPrices[selectedSize]) {
+      setDefaultPrice(defaultPrices[selectedSize]);
+    }
+  }, [selectedSize, defaultPrices]);
   const handleSizeChange = (size) => {
     setSelectedSize(size);
-    // Adjust prices based on the selected size
-    // For simplicity, let's assume the prices increase by $5 for each size
-    setPrices({
-      SMALL: 10,
-      MEDIUM: 15,
-      LARGE: 20,
-    });
+    const adjustedPrices = {
+      SMALL: defaultPrices.SMALL + 5,
+      MEDIUM: defaultPrices.MEDIUM + 5,
+      LARGE: defaultPrices.LARGE + 5,
+    };
+    setPrices(adjustedPrices);
   };
 
   return (
-    <PriceContext.Provider value={{ selectedSize, prices, handleSizeChange }}>
+    <PriceContext.Provider value={{ selectedSize, prices, defaultPrice, handleSizeChange }}>
       {children}
     </PriceContext.Provider>
   );
