@@ -38,7 +38,7 @@ function Product1() {
     return <div>Loading...</div>;
   }
 
-  const selectedPrice = prices[selectedSize] ?? product.price;
+  const selectedPrice =  product.price ?? prices[selectedSize];
   const discountPrice = selectedPrice * 0.2;
   const rewardPoints = selectedPrice * 0.15;
   return (
