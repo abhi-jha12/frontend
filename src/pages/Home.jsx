@@ -16,6 +16,7 @@ const db = getFirestore();
 function Home() {
 
   const [postersData, setPostersData] = useState([]);
+  const [cardsData, setcardsData] = useState([]);
 
   useEffect(() => {
     const fetchposters = async () => {
@@ -29,6 +30,20 @@ function Home() {
     };
 
     fetchposters();
+  }, []);
+
+  useEffect(() => {
+    const fetchcards = async () => {
+      const cardsCollection = collection(db, "topsearch");
+      const snapshot = await getDocs(cardsCollection);
+      const fetchedcards = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setcardsData(fetchedcards);
+    };
+
+    fetchcards();
   }, []);
 
   return (
@@ -58,9 +73,13 @@ function Home() {
         <h1 className="text-center font-bold font-overpass text-4xl my-7 tracking-widest ">TOP SEARCHES</h1>
       </div>
       <div className='flex flex-wrap md:flex-row relative justify-around'>
-      <ImageCard pid='1' btn_name="ADD TO CART" />
-      <ImageCard pid='2' btn_name="ADD TO CART" />
-      <ImageCard pid='3' btn_name="ADD TO CART" />
+      {cardsData.map((product) => (
+        <ImageCard
+          btn_name="ADD TO CART"
+          pid={product.id}
+          img={product.img}
+        />
+      ))}
       </div>
       <Footer />
     </>

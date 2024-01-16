@@ -69,7 +69,7 @@ function Product1() {
             This is a demo product available at a price of {selectedPrice} with a discount of {discountPrice}.
           </div>
           <div className="flex md:flex-row flex-col flex-wrap relative group justify-center md:gap-1">
-            <AddButton name="ADD TO CART" textSize="lg" bid="1" />
+            <AddButton name="ADD TO CART" textSize="lg" bid={product.id} />
             <Button name="TRY IT VIRTUALLY" location="/error" textSize="lg" />
             <Button name="MOVE TO WISHLIST" location="/error" textSize="lg" />
           </div>

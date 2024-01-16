@@ -1,33 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import AddButton from "../button/AddButton";
 import { Link } from "react-router-dom";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import firebaseConfig from "../../firebaseConfig";
 
-initializeApp(firebaseConfig);
-const db = getFirestore();
-
-function ImageCard({ pid, btn_name }) {
-  const [fetchedUrl, setFetchedUrl] = useState("");
-
-  useEffect(() => {
-    const fetchproducturl = async () => {
-      const urlCollection = collection(db, "topsearch");
-      const snapshot = await getDocs(urlCollection);
-      const firstDoc = snapshot.docs[0];
-      const url = firstDoc.data().url;
-      setFetchedUrl(url);
-    };
-
-    fetchproducturl();
-  }, []);
-
+function ImageCard({ pid, btn_name, img }) {
   return (
     <div className="flex flex-col justify-between">
-      <Link to="/product1">
+      <Link to={`/topsearch/${pid}`}>
         <div
-          style={{ "--image-url": `url(${fetchedUrl})` }}
+          style={{ backgroundImage: `url(${img})` }}
           className=" bg-[image:var(--image-url)] max-w-[400px] h-[300px] w-full m-auto py-16 px-4 relative group rounded-2xl"
         ></div>
       </Link>
