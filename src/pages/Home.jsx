@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/nav/Header";
 import ImageCarousel from "../components/hero/ImageCarousel";
 import Button from "../components/button/Button";
@@ -8,15 +8,17 @@ import Footer from "../components/footer/Footer";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import firebaseConfig from "../firebaseConfig";
+import SignInSignUpModal from "../components/utils/SignInSignUpModal";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 initializeApp(firebaseConfig);
 const db = getFirestore();
 
-
 function Home() {
-
   const [postersData, setPostersData] = useState([]);
   const [cardsData, setcardsData] = useState([]);
+  const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchposters = async () => {
@@ -24,7 +26,7 @@ function Home() {
       const snapshot = await getDocs(postersCollection);
       const fetchedItems = snapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       }));
       setPostersData(fetchedItems);
     };
@@ -38,12 +40,27 @@ function Home() {
       const snapshot = await getDocs(cardsCollection);
       const fetchedcards = snapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       }));
       setcardsData(fetchedcards);
     };
 
     fetchcards();
+  }, []);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log("Auth State Changed: ", user);
+      if (user) {
+        setIsUserAuthenticated(true);
+      } else {
+        setIsUserAuthenticated(false);
+        setShowModal(true);
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   return (
@@ -61,27 +78,34 @@ function Home() {
         <Button name=" Get Your Size" textSize="text-2xl" />
       </div>
       <div className="flex flex-col gap-20 mx-5">
-      {postersData.map((product) => (
-        <Poster
-          btnname={product.btnname}
-          posterimg={product.posterimg}
-          redirect={product.redirect}
-        />
-      ))}
+        {postersData.map((product) => (
+          <Poster
+            key={product.id}
+            btnname={product.btnname}
+            posterimg={product.posterimg}
+            redirect={product.redirect}
+          />
+        ))}
       </div>
       <div className="container mx-auto flex items-center justify-center flex-1 text-black text-center text-4xl font-bold self-center max-w-[1061px] mt-20 md:shrink  max-md:mt-5">
-        <h1 className="text-center font-bold font-overpass text-4xl my-7 tracking-widest ">TOP SEARCHES</h1>
+        <h1 className="text-center font-bold font-overpass text-4xl my-7 tracking-widest ">
+          TOP SEARCHES
+        </h1>
       </div>
-      <div className='flex flex-wrap md:flex-row relative justify-around mx-12'>
-      {cardsData.map((product) => (
-        <ImageCard
-          btn_name="ADD TO CART"
-          pid={product.id}
-          img={product.img}
-        />
-      ))}
+      <div className="flex flex-wrap md:flex-row relative justify-around mx-12">
+        {cardsData.map((product) => (
+          <ImageCard
+            key={product.id}
+            btn_name="ADD TO CART"
+            pid={product.id}
+            img={product.img}
+          />
+        ))}
       </div>
       <Footer />
+      {!isUserAuthenticated && showModal && (
+        <SignInSignUpModal onClose={() => setShowModal(false)} />
+      )}
     </>
   );
 }

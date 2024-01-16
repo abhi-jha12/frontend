@@ -52,7 +52,7 @@ function Footer() {
               <FaYoutube />
           </a>
         </div>
-        <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700" />
+        <hr className="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700" />
         <div className="text-center text-gray-500 text-sm py-4  mt-1">
           © 2023 Greenbluebrown Apparels Pvt. Ltd
         </div>

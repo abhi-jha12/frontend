@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import Home from "./pages/Home";
 import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
 import Shop from "./pages/shop/Shop";
 import Product1 from "./pages/product/Product1";
 import Product2 from "./pages/product/Product2";
@@ -21,10 +20,6 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
   },
   {
     path: "/shop",
