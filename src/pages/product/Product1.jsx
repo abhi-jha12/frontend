@@ -21,7 +21,7 @@ function Product1() {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const docRef = doc(db, 'Product', productId);
+      const docRef = doc(db, 'Products', productId);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
