@@ -3,10 +3,12 @@ import Header from "../../components/nav/Header";
 import Footer from "../../components/footer/Footer";
 import { getAuth, signOut } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-
+import { useNavigate } from 'react-router-dom';
+const db = getFirestore();
 function Profile() {
   const [userData, setUserData] = useState({});
-  const db = getFirestore();
+  
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchUserData = async () => {
       const auth = getAuth();
@@ -30,6 +32,7 @@ function Profile() {
     const auth = getAuth();
     try {
       await signOut(auth);
+      navigate('/login');
     } catch (error) {
       console.error("Logout Error: ", error);
     }
