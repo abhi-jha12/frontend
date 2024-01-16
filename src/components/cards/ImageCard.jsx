@@ -1,5 +1,5 @@
 import React from "react";
-import AddButton from "../button/AddButton";
+import AddButton2 from "../button/AddButton2";
 import { Link } from "react-router-dom";
 
 function ImageCard({ pid, btn_name, img }) {
@@ -8,12 +8,12 @@ function ImageCard({ pid, btn_name, img }) {
       <Link to={`/topsearch/${pid}`}>
         <div
           style={{ backgroundImage: `url(${img})` }}
-          className=" bg-[image:var(--image-url)] max-w-[400px] h-[300px] w-full m-auto py-16 px-4 relative group rounded-2xl"
+          className=" bg-[image:var(--image-url)] max-w-[300px] h-[300px] w-full m-auto py-5 px-2 relative group rounded-2xl"
         ></div>
       </Link>
 
       <div className="flex flex-col font-overpass m-auto justify-center">
-        <AddButton
+        <AddButton2
           name={btn_name ?? "Empty button"}
           textSize="sm"
           bid={pid ?? 1}

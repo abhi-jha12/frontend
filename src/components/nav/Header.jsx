@@ -29,11 +29,13 @@ function Header() {
 
   return (
     <div className="flex items-stretch justify-between gap-10 mt-5 mx-10 max-md:max-w-full max-md:flex-wrap max-md:mr-2.5">
+      <Link to="/">
       <img
         loading="lazy"
         src={logo}
         className="aspect-square object-contain object-center w-20 overflow-hidden shrink-0 max-w-full"
       />
+      </Link>
       {isMobileView ? (
         <>
           <button
