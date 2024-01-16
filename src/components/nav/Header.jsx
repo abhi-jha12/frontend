@@ -101,7 +101,7 @@ function Header() {
             </div>
 
             <div className="self-stretch flex items-stretch justify-between gap-8 mx-3">
-              <Link to="/cart">
+              <Link to="/error">
                 <img
                   loading="lazy"
                   src={cart_icon}
