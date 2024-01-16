@@ -65,7 +65,7 @@ function Header() {
               <Link to="/wishlist" className="text-xs p-2">
                 WISHLIST
               </Link>
-              <Link to="/cart" className="text-xs p-2">
+              <Link to="/error" className="text-xs p-2">
                 CART
               </Link>
               <Link to="/profile" className="text-xs p-2">
