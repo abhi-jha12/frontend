@@ -16,11 +16,9 @@ function Header() {
       setIsMobileView(window.innerWidth <= 1025);
     };
 
-    // Initial check and add event listener
     handleResize();
     window.addEventListener("resize", handleResize);
 
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -37,7 +35,6 @@ function Header() {
         className="aspect-square object-contain object-center w-20 overflow-hidden shrink-0 max-w-full"
       />
       {isMobileView ? (
-        // Hamburger button and menu for mobile view
         <>
           <button
             className="navbar-burger flex items-center text-black p-3"
