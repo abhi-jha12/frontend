@@ -9,6 +9,7 @@ import {
   FaLinkedinIn,
   FaInstagram,
   FaXTwitter,
+  FaYoutube,
 } from "react-icons/fa6";
 function Footer() {
   return (
@@ -38,17 +39,17 @@ function Footer() {
         </div>
         <p className="text-gray-400 my-4 text-center">Follow us on:</p>
         <div className="flex justify-center space-x-6 mb-4">
-          <a href="https://facebook.com" className="hover:text-gray-300">
+          <a href="https://www.facebook.com/profile.php?id=100092894196838" className="hover:text-gray-300">
             <FaFacebookF />
           </a>
-          <a href="https://twitter.com" className="hover:text-gray-300">
+          <a href="https://twitter.com/GREENBLUEB79708" className="hover:text-gray-300">
             <FaXTwitter />
           </a>
-          <a href="https://linkedin.com" className="hover:text-gray-300">
-            <FaLinkedinIn />
+          <a href="https://www.instagram.com/_green_blue_brown_/" className="hover:text-gray-300">
+              <FaInstagram />
           </a>
-          <a href="https://instagram.com" className="hover:text-gray-300">
-            <FaInstagram />
+          <a href="https://www.youtube.com/@GREEN_BLUE_BROWN" className="hover:text-gray-300">
+              <FaYoutube />
           </a>
         </div>
         <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700" />
