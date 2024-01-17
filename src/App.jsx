@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import Home from "./pages/Home";
@@ -11,6 +11,7 @@ import ErrorPage from "./pages/error/ErrorPage";
 import store from "./redux/store";
 import Wishlist from "./pages/wishlist/Wishlist";
 import Profile from "./pages/profile/Profile";
+import Loader from "../src/components/loader/Loader";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,18 @@ const router = createBrowserRouter([
 ]);
 
 function App({}) {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    // Simulate a loading process, for example, fetching data
+    // This is where you would normally check if your app is ready
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // Adjust time as needed for your app's load time
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <>
       <Provider store={store}>

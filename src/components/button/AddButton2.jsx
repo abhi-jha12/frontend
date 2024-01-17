@@ -9,7 +9,7 @@ function AddButton2(props) {
 
   return (
     <button
-      className={`justify-center font-overpass text-white font-bold bg-neutral-950 self-center items-stretch mt-8 mb-5 px-20 py-3 rounded-lg ${props.textSize || 'text-lg'}`}
+      className={`justify-center font-overpass text-white hover:text-black font-bold bg-neutral-950 hover:bg-white self-center items-stretch mt-8 mb-5 px-20 py-3 rounded-lg border-2 border-black ${props.textSize || 'text-lg'}`}
       onClick={() => dispatch(addtoCart({btn_id}))}
     >
       {btn_text}

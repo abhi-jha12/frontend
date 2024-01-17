@@ -8,7 +8,7 @@ function ImageCard({ pid, btn_name, img }) {
       <Link to={`/topsearch/${pid}`}>
         <div
           style={{ backgroundImage: `url(${img})` }}
-          className=" bg-[image:var(--image-url)] max-w-[300px] h-[300px] w-full m-auto py-5 px-2 relative group rounded-2xl"
+          className=" bg-[image:var(--image-url)] max-w-[300px] h-[300px] w-full m-auto py-5 px-2 relative group rounded-2xl hover:scale-110 hover:-translate-y-1 transition ease-in-out delay-150"
         ></div>
       </Link>
 
