@@ -67,7 +67,7 @@ function Header() {
               <Link to="/wishlist" className="text-xs p-2">
                 WISHLIST
               </Link>
-              <Link to="/error" className="text-xs p-2">
+              <Link to="/cart" className="text-xs p-2">
                 CART
               </Link>
               <Link to="/profile" className="text-xs p-2">
@@ -103,7 +103,7 @@ function Header() {
             </div>
 
             <div className="self-stretch flex items-stretch justify-between gap-8 mx-3">
-              <Link to="/error">
+              <Link to="/cart">
                 <img
                   loading="lazy"
                   src={cart_icon}

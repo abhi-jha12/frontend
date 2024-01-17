@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function ProductCard({ pid, btn_name, img, price }) {
   const selectedPrice = useContext(PriceContext);
-  
+
   return (
     <>
       <div className="flex flex-col justify-center ">
