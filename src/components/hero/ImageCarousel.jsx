@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
-import firebaseConfig from '../../firebaseConfig';
-import backicon from '../../assets/back_icon.png';
-import fronticon from '../../assets/front_icon.png';
-import { RxDotFilled } from 'react-icons/rx';
+import React, { useState, useEffect } from "react";
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import firebaseConfig from "../../firebaseConfig";
+import backicon from "../../assets/back_icon.png";
+import fronticon from "../../assets/front_icon.png";
+import { RxDot } from "react-icons/rx";
 
 // Initialize Firebase
 initializeApp(firebaseConfig);
@@ -17,18 +17,18 @@ function ImageCarousel() {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const docRef = doc(db, 'carousel','yS0CL2ETl5Qvt3BINsHe');
+        const docRef = doc(db, "carousel", "yS0CL2ETl5Qvt3BINsHe");
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          const imageUrls = docSnap.data().carimg; 
-          const slidesData = imageUrls.map(url => ({ url }));
+          const imageUrls = docSnap.data().carimg;
+          const slidesData = imageUrls.map((url) => ({ url }));
           setSlides(slidesData);
         } else {
-          console.log('No such document!');
+          console.log("No such document!");
         }
       } catch (error) {
-        console.error('Error fetching images: ', error);
+        console.error("Error fetching images: ", error);
       }
     };
 
@@ -60,21 +60,31 @@ function ImageCarousel() {
         ></div>
       )}
       {/* Left Arrow */}
-      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-white text-black cursor-pointer">
-        <img src={backicon} onClick={prevSlide} alt="Previous" />
-      </div>
+
+      <img
+        src={backicon}
+        onClick={prevSlide}
+        alt="Previous"
+        className=" w-11 h-11 hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-transparent text-black cursor-pointer"
+      />
+
       {/* Right Arrow */}
-      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-white text-black cursor-pointer">
-        <img src={fronticon} onClick={nextSlide} alt="Next" />
-      </div>
+
+      <img
+        src={fronticon}
+        onClick={nextSlide}
+        alt="Next"
+        className="w-11 h-11 hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-transparent text-black cursor-pointer"
+      />
+
       <div className="flex top-4 justify-center -mt-10">
         {slides.map((_, slideIndex) => (
           <div
             key={slideIndex}
             onClick={() => goToSlide(slideIndex)}
-            className="text-2xl cursor-pointer"
+            className="text-3xl cursor-pointer hover:-translate-y-1 delay-150"
           >
-            <RxDotFilled />
+            <RxDot />
           </div>
         ))}
       </div>
