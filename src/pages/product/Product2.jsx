@@ -10,6 +10,7 @@ import { PriceContext } from "../../PriceContext";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import firebaseConfig from "../../firebaseConfig";
 import { initializeApp } from "firebase/app";
+import Loader from "../../components/loader/Loader";
 
 initializeApp(firebaseConfig);
 const db = getFirestore();
@@ -35,7 +36,7 @@ function Product2() {
   }, [productId]);
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const selectedPrice = product.price ?? prices[selectedSize];

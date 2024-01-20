@@ -87,7 +87,7 @@ function Home() {
           />
         ))}
       </div>
-      <div className="container mx-auto flex items-center justify-center flex-1 text-black text-center text-4xl font-bold self-center max-w-[1061px] mt-20 md:shrink  max-md:mt-5">
+      <div className="container mx-auto flex items-center justify-center flex-1 text-black text-center text-4xl font-bold self-center max-w-[1061px] my-20 md:shrink  max-md:mt-5">
         <h1 className="text-center font-bold font-overpass text-4xl my-7 tracking-widest ">
           TOP SEARCHES
         </h1>
