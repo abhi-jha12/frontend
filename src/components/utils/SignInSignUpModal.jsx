@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -38,7 +38,7 @@ const SignInSignUpModal = ({ onClose }) => {
         email: email,
         photoUrl: photoUrl,
       });
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
       console.error("Error signing up: ", error);
     }
@@ -51,7 +51,7 @@ const SignInSignUpModal = ({ onClose }) => {
         email,
         password
       );
-      navigate('/');
+      navigate("/");
       console.log(userCredential.user); // Handle the signed-in user
     } catch (error) {
       console.error("Error signing in: ", error);
@@ -63,124 +63,136 @@ const SignInSignUpModal = ({ onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50 px-4">
-      <div className="flex bg-white rounded-xl border-2 border-black justify-center items-center">
-        <div className="flex ml-4 w-1/2 items-center">
-          <div
-            style={{ "--image-url": `url(${photoUrl})` }}
-            className=" bg-[image:var(--image-url)] max-w-[500px] h-[300px] px-10 w-full  relative group rounded-2xl"
-          ></div>
-        </div>
+      <div className="flex flex-col bg-white md:w-1/2 rounded-xl border-2 border-black justify-center items-center px-10 py-10">
+        <div className=" flex flex-row w-full">
+          <div className="flex ml-4 w-full items-center">
+            <div
+              style={{ "--image-url": `url(${photoUrl})` }}
+              className=" bg-[image:var(--image-url)] max-w-[500px] h-[300px] px-10 w-full  relative group rounded-2xl border-2 border-grey"
+            ></div>
+          </div>
 
-        <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-md relative ml-2">
-          <button
-            onClick={onClose}
-            className="absolute top-0 right-0 m-4 text-black text-2xl"
-          >
-            <FaTimes />
-          </button>
-          <form
-            className="space-y-6"
-            onSubmit={isSignUp ? handleSignUp : handleSignIn}
-          >
-            {isSignUp ? (
-              // Sign-up form structure
-              <>
-                <div className="flex space-x-2">
+          <div className="bg-white py-8 rounded-lg w-full max-w-md relative ml-2">
+            <button
+              onClick={onClose}
+              className="absolute right-0 -top-5 text-black text-2xl"
+            >
+              <FaTimes />
+            </button>
+            <form
+              className="space-y-6"
+              onSubmit={isSignUp ? handleSignUp : handleSignIn}
+            >
+              {isSignUp ? (
+                // Sign-up form structure
+                <>
+                  <div className="flex space-x-2">
+                    <input
+                      type="text"
+                      placeholder="First name"
+                      className="w-1/2 px-4 py-2 border-2 border-black rounded-2xl"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Surname"
+                      className="w-1/2 px-4 py-2 border-2 border-black rounded-2xl"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
+                  </div>
                   <input
-                    type="text"
-                    placeholder="First name"
-                    className="w-1/2 px-4 py-2 border-2 border-black rounded-full"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    type="email"
+                    placeholder="Email address"
+                    className="w-full px-4 py-2 border-2 border-black rounded-2xl"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
-                  <input
-                    type="text"
-                    placeholder="Surname"
-                    className="w-1/2 px-4 py-2 border-2 border-black rounded-full"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </div>
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  className="w-full px-4 py-2 border-2 border-black rounded-full"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <div className="flex space-x-2">
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    className="w-1/2 px-4 py-2 border-2 border-black rounded-full"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <input
-                    type="tel"
-                    placeholder="Phone number"
-                    className="w-1/2 px-4 py-2 border-2 border-black rounded-full"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                  />
-                </div>
-                <div>
-                <h5 className="text-sm font-overpass mb-1 text-center">Upload Profile Photo</h5>
-                <input
-                  type="url"
-                  placeholder="profile photo url"
-                  pattern="https://.*"
-                  className="w-full px-4 py-1 border-2 border-black rounded-full"
-                  value={photoUrl}
-                  onChange={(e) => setphotoUrl(e.target.value)}
-                />
-                </div>
-                
-              </>
-            ) : (
-              // Sign-in form structure
-              <>
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  className="w-full px-4 py-2 border-2 border-black rounded-full"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  className="w-full px-4 py-2 border-2 border-black rounded-full"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <div className="text">
-                  <a href="#" className="text-xs text-gray-600 hover:underline">
-                    Forgotten password?
-                  </a>
-                </div>
-              </>
-            )}
-            <div className="flex justify-center items-center h-full">
+                  <div className="flex space-x-2">
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      className="w-1/2 px-4 py-2 border-2 border-black rounded-xl"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <input
+                      type="tel"
+                      placeholder="Phone number"
+                      className="w-1/2 px-4 py-2 border-2 border-black rounded-xl"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <h5 className="text-sm font-overpass mb-1 text-center">
+                      Upload Profile Photo
+                    </h5>
+                    <input
+                      type="url"
+                      placeholder="profile photo url"
+                      pattern="https://.*"
+                      className="w-full px-4 py-1 border-2 border-black rounded-xl"
+                      value={photoUrl}
+                      onChange={(e) => setphotoUrl(e.target.value)}
+                    />
+                  </div>
+                </>
+              ) : (
+                // Sign-in form structure
+                <>
+                  <div className="flex flex-col gap-2 justify-center mx-2 md:mx-10">
+                    <input
+                      type="email"
+                      placeholder="Email address"
+                      className="w-full px-0 md:px-2 py-2 border-2 border-black rounded-xl"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      className="w-full px-4 py-2 border-2 border-black rounded-xl"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+
+                    <div className="flex flex-col justify-start">
+                      <a
+                        href="#"
+                        className="text-xs text-gray-600 hover:underline"
+                      >
+                        Forgotten password?
+                      </a>
+                    </div>
+                  </div>
+                </>
+              )}
+              <div className="flex justify-center items-center h-full font-overpass">
+                <button
+                  type="submit"
+                  className="w-auto bg-black text-white px-5 md:px-12 py-2 rounded-xl"
+                >
+                  {isSignUp ? "SIGN UP" : "LOGIN"}
+                </button>
+              </div>
+            </form>
+            <div className="text-center mt-6">
+              <p className="text-sm">
+                {isSignUp ? "Already have an account?" : "New to the site?"}
+              </p>
               <button
-                type="submit"
-                className="w-auto bg-black text-white px-4 py-2 rounded-full"
+                onClick={toggleForm}
+                className="w-full bg-white text-black px-6 py-2 font-bold rounded-xl border-2 border-black"
               >
-                {isSignUp ? "SIGN UP" : "LOGIN"}
+                {isSignUp ? "SIGN IN" : "CREATE NEW ACCOUNT"}
               </button>
             </div>
-          </form>
-          <div className="text-center mt-6">
-            <p className="text-sm">
-              {isSignUp ? "Already have an account?" : "New to the site?"}
-            </p>
-            <button
-              onClick={toggleForm}
-              className="w-full bg-white text-black px-2 py-2 font-bold rounded-full border-2 border-black"
-            >
-              {isSignUp ? "SIGN IN" : "CREATE NEW ACCOUNT"}
-            </button>
           </div>
+        </div>
+        <div className=" flex justify-center align-top text-center -mb-8 text-gray-600 text-xs md:text-sm">
+          © 2023 Greenbluebrown Apparels Pvt. Ltd
         </div>
       </div>
     </div>
