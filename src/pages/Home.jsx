@@ -67,11 +67,11 @@ function Home() {
     <>
       <Header />
       <ImageCarousel />
-      <div className="container mx-auto flex items-center justify-center  text-black text-center text-xl self-center max-w-[1061px] mt-15 md:shrink  max-md:mt-5">
+      <div className="flex mx-10 md:mx-20 items-center justify-center text-black text-center text-md md:text-xl  tracking-tightest md:tracking-widest ">
         <h3 className="font-overpass">
           &quot; Discovering your perfect fit is now easier than ever. Say
           goodbye to the hassle of measuring tapes! Simply click below to unlock
-          a seamless and personalized sizing experience.&quot;
+          a seamless and personalized sizing experience&quot;
         </h3>
       </div>
       <div className="flex items-center mx-auto justify-center">
