@@ -52,11 +52,11 @@ function ImageCarousel() {
   };
 
   return (
-    <div className="w-[400px] h-[500px] md:w-[1300px] md:h-[580px] -ml-7 md:ml-3 md:mx-5 py-20">
+    <div className="w-[400px] h-[500px] md:w-[1300px] md:h-[580px] md:ml-3 mx-2 md:mx-5 py-20">
       {slides.length > 0 && (
         <div
           style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-          className="h-[300px] w-[300px] md:h-[450px] md:w-[1300px] m-auto rounded-2xl bg-center bg-cover duration-500"
+          className="h-[350px] w-[400px] md:h-[450px] md:w-[1300px] m-auto rounded-2xl bg-center bg-cover duration-500"
         ></div>
       )}
       {/* Left Arrow */}
