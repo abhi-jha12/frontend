@@ -56,7 +56,7 @@ function ImageCarousel() {
       {slides.length > 0 && (
         <div
           style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-          className="h-[350px] w-[400px] md:h-[450px] md:w-[1300px] m-auto rounded-2xl bg-center bg-cover duration-500"
+          className="h-[350px] w-[370px] md:h-[450px] md:w-[1300px] m-auto rounded-2xl bg-center bg-cover duration-500"
         ></div>
       )}
       {/* Left Arrow */}
