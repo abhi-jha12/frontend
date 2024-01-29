@@ -89,10 +89,9 @@ function Product1() {
             />
           </div>
 
-          <div className="text-start text-black font-regular text-lg py-2 px-3 mt-1 tracking-wider">
+          <div className="text-start text-black font-bold text-lg py-2 px-3 mt-1 tracking-wider">
             Item Description: <br />
-            This is a demo product available at a price of {selectedPrice} with
-            a discount of {discountPrice}.
+            {product.description}
           </div>
           <div className="flex md:flex-row flex-col flex-wrap relative group justify-center md:gap-1">
             <AddButton name="ADD TO CART" textSize="lg" bid={product.id} />

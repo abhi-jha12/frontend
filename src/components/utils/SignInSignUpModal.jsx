@@ -65,10 +65,19 @@ const SignInSignUpModal = ({ onClose }) => {
     <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50 px-4">
       <div className="flex flex-col bg-white md:w-1/2 rounded-xl border-2 border-black justify-center items-center px-10 py-10">
         <div className=" flex flex-row w-full">
-          <div className="flex ml-4 w-full items-center">
+          <div className="flex w-full items-center">
             <div
-              style={{ "--image-url": `url(${photoUrl})` }}
-              className=" bg-[image:var(--image-url)] max-w-[500px] h-[300px] px-10 w-full  relative group rounded-2xl border-2 border-grey"
+              style={{
+                backgroundImage: `url(${
+                  photoUrl
+                    ? photoUrl
+                    : "https://firebasestorage.googleapis.com/v0/b/gbbfull-2f55c.appspot.com/o/c2nlj_dayf5_rm0kz_Artboard%201.jpg?alt=media&token=cfbf9939-f056-459b-a8d3-fae83d6c1e6f"
+                })`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+              className=" h-[250px] w-[200px] md:h-[300px] md:w-[300px] mt-10 -ml-5 md:ml-0 md:mt-4 m-auto relative group rounded-2xl"
             ></div>
           </div>
 
