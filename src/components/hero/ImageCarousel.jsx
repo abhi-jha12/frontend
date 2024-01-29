@@ -52,7 +52,7 @@ function ImageCarousel() {
   };
 
   return (
-    <div className="w-[400px] h-[500px] md:w-[1300px] md:h-[580px] md:ml-3 mx-2 md:mx-5 py-20">
+    <div className="w-[400px] h-[500px] md:w-[1300px] md:h-[580px] md:ml-3 md:mx-5 py-20">
       {slides.length > 0 && (
         <div
           style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
