@@ -18,7 +18,7 @@ const db = getFirestore();
 function Product1() {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
-  const { selectedSize, prices, defaultPrice } = useContext(PriceContext);
+  const { selectedSize, prices } = useContext(PriceContext);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -48,8 +48,13 @@ function Product1() {
       <div className="flex flex-row flex-wrap relative group justify-around">
         <div className="flex flex-col px-4">
           <div
-            style={{ "--image-url": `url(${product.bigimg})` }}
-            className=" bg-[image:var(--image-url)] max-w-[400px] h-[500px] w-full lg:ml-10 mt-8 m-auto py-16 px-4 relative group rounded-2xl"
+            style={{
+              backgroundImage: `url(${product.bigimg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+            className="h-[400px] w-[300px] md:h-[500px] md:w-[400px] m-auto lg:ml-10 mt-8 py-16 px-4 relative group rounded-2xl"
           />
           <div className="ml-10">
             <SizeButton name="SIZE" />
@@ -65,12 +70,22 @@ function Product1() {
         <div className="flex flex-col mx-1">
           <div className="flex flex-row flex-wrap relative group">
             <div
-              style={{ "--image-url": `url(${product.miniimg1})` }}
-              className=" bg-[image:var(--image-url)] max-w-[250px] h-[300px] w-full lg:ml-5 mt-8 m-auto py-16 px-3 relative group rounded-2xl"
+              style={{
+                backgroundImage: `url(${product.miniimg1})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+              className=" h-[300px] w-[280px] md:h-[300px] md:w-[300px] m-auto lg:ml-5 mt-8 py-16 px-3 relative group rounded-2xl"
             />
             <div
-              style={{ "--image-url": `url(${product.miniimg2})` }}
-              className=" bg-[image:var(--image-url)] max-w-[250px] h-[300px] w-full lg:ml-5 mt-8 m-auto py-16 px-3 relative group rounded-2xl"
+              style={{
+                backgroundImage: `url(${product.miniimg2})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+              className=" h-[300px] w-[280px] md:h-[300px] md:w-[300px] lg:ml-5 mt-8 m-auto py-16 px-3 relative group rounded-2xl"
             />
           </div>
 

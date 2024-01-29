@@ -11,8 +11,15 @@ function ProductCard({ pid, btn_name, img, price }) {
       <div className="flex flex-col justify-center ">
         <Link to={`/product/${pid}`}>
           <div
-            style={{ backgroundImage: `url(${img})` }}
-            className=" bg-[image:var(--image-url)] max-w-[220px] h-[250px] w-full m-auto py-16 px-4 relative group rounded-2xl hover:scale-105 hover:-translate-y-1 transition ease-in-out delay-150"
+            style={{
+              backgroundImage: `url(${img})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              height: '250px',
+              width: '230px'
+            }}
+            className="py-16 px-4 relative group rounded-2xl hover:scale-105 hover:-translate-y-1 transition ease-in-out delay-150"
           ></div>
         </Link>
         <div className="flex flex-col font-overpass m-auto justify-center">

@@ -28,7 +28,7 @@ function Shop() {
     <div>
       <Header />
       <h1 className="text-center font-overpass font-bold text-4xl my-7 ">ALL PRODUCTS</h1>
-      <div className="flex flex-wrap md:flex-row relative gap-4 justify-center">
+      <div className="flex flex-wrap md:flex-row relative gap-6 justify-center">
       {productsData.map((product) => (
         <ProductCard
           pid={product.id}
