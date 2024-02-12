@@ -11,6 +11,7 @@ import firebaseConfig from "../firebaseConfig";
 import SignInSignUpModal from "../components/utils/SignInSignUpModal";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
+// Initialize Firebase
 initializeApp(firebaseConfig);
 const db = getFirestore();
 
@@ -19,33 +20,46 @@ function Home() {
   const [cardsData, setcardsData] = useState([]);
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
-    const fetchposters = async () => {
+    const fetchPosters = async () => {
       const postersCollection = collection(db, "poster");
       const snapshot = await getDocs(postersCollection);
-      const fetchedItems = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+      const fetchedItems = snapshot.docs.map((doc) => {
+        // Adjust for mobile or desktop view
+        const data = doc.data();
+        const posterImage = isMobile ? data.mobileposterimg : data.posterimg;
+        return {
+          id: doc.id,
+          ...data,
+          posterimg: posterImage, // Use the adjusted image URL
+        };
+      });
       setPostersData(fetchedItems);
     };
 
-    fetchposters();
-  }, []);
+    fetchPosters();
+  }, [isMobile]); // Re-fetch when isMobile changes
 
   useEffect(() => {
-    const fetchcards = async () => {
+    const fetchCards = async () => {
       const cardsCollection = collection(db, "topsearch");
       const snapshot = await getDocs(cardsCollection);
-      const fetchedcards = snapshot.docs.map((doc) => ({
+      const fetchedCards = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
-      setcardsData(fetchedcards);
+      setcardsData(fetchedCards);
     };
 
-    fetchcards();
+    fetchCards();
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -69,9 +83,7 @@ function Home() {
       <ImageCarousel />
       <div className="flex mx-10 md:mx-20 items-center justify-center text-black text-center text-md md:text-xl  tracking-tightest md:tracking-widest ">
         <h3 className="font-overpass">
-          &quot; Discovering your perfect fit is now easier than ever. Say
-          goodbye to the hassle of measuring tapes! Simply click below to unlock
-          a seamless and personalized sizing experience&quot;
+          "Discovering your perfect fit is now easier than ever. Say goodbye to the hassle of measuring tapes! Simply click below to unlock a seamless and personalized sizing experience"
         </h3>
       </div>
       <div className="flex items-center mx-auto justify-center">
@@ -82,7 +94,7 @@ function Home() {
           <Poster
             key={product.id}
             btnname={product.btnname}
-            posterimg={product.posterimg}
+            posterimg={product.posterimg} // This now dynamically uses mobile or desktop images
             redirect={product.redirect}
           />
         ))}
